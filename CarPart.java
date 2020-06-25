@@ -12,8 +12,13 @@ public class CarPart {
 	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
 
 	public CarPart(String name) {
-		this.name = name + " #" + ++id;
+		incrementID();
+		this.name = name + " #" + id;
 		this.dateCreated = new Date();
+	}
+	
+	private synchronized void incrementID() {
+		id++;
 	}
 
 	@Override
